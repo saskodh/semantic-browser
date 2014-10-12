@@ -48,23 +48,18 @@ angular.module('sbApp')
 
     var getResource = function(url) {
 
-      url += '?callback=JSON_CALLBACK';
-
       var headers = {
-        'Accept': 'application/json',
-        'myHeader': 'tralaalala'
+        'Accept': 'application/json'
       };
 
       var config = {
-        method: 'JSONP',
+        sbAppProxy: true,
+        method: 'GET',
         url: url,
         headers: headers,
         cache: true
       };
 
-      //return $http.jsonp(url, config);
-      $http.jsonp('http://dbpedia.org/fct/facet.vsp?q=woody');
-      $http.jsonp(url, {headers: {Accept: 'application/json'}});
       return $http(config);
     };
 
