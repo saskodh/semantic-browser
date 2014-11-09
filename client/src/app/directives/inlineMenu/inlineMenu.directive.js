@@ -8,7 +8,7 @@ angular.module('sbApp')
   .directive('inlineMenu', function () {
     return {
       restrict: 'A',
-      templateUrl: 'app/directives/inlineMenu/inlineMenu.directive.tpl.html',
+      templateUrl: 'src/app/directives/inlineMenu/inlineMenu.directive.tpl.html',
       scope : {
         config : '=inlineMenu'
       }

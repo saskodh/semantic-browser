@@ -1,0 +1,213 @@
+.body {
+    margin: 0;
+}
+.page {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.header {
+
+}
+.main {
+    top: 50px;
+    bottom: 20px;
+}
+
+.footer {
+    height: 20px;
+    bottom: 0;
+}
+.footer-nav {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+}
+
+.sidebar {
+    display: table;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.content {
+    left: 5px;
+    right: 0;
+}
+
+.sb-split-screen {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 5px;
+    left: 0;
+    background-color: darkgray;
+    cursor: e-resize;
+}
+
+.sb-panel {
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+.sb-panel-rounded {
+    border-radius: 4px;
+}
+
+.sidebar .sb-panel {
+
+}
+.literals-container {
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    margin-bottom: -2px;
+}
+.literals-container.sb-panel {
+    padding: 0;
+    margin: 0;
+}
+
+.graph {
+    overflow: hidden;
+}
+
+
+.short-description{
+    display: table-row;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+/*
+    padding: 5px;
+*/
+}
+.short-description > .sb-panel {
+    margin: 0 0 5px 0;
+}
+.literals{
+    display: table-row;
+    height: 100%;
+}
+
+.sb-literal-item {
+    padding: 10px;
+    border-bottom: 1px solid #dca7a7;
+}
+.sb-literal-item:hover {
+    background-color: rgba(220, 167, 167, 0.30);
+}
+
+button.close {
+    margin-top: -5px;
+}
+
+.sb-literal-item-title {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.sb-literal-item-separator {
+    border-bottom: 1px solid #ddd;
+    margin-left: -4px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
+/*Short description window*/
+.sb-short-description-title {
+    padding-top: 5px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 20px;
+}
+.sb-short-description-image {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+.sb-short-description-image > img {
+    width: 76px;
+    height: 83px;
+}
+
+/*Bookmarks window*/
+.sb-bookmarks {
+    width: 270px;
+    padding: 15px 15px 10px 15px;
+    text-align: left;
+}
+.sb-bookmarks-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #777;
+}
+
+/*Endpoints window*/
+.sb-endpoints {
+    min-width: 270px;
+    padding: 15px 15px 10px 15px;
+}
+.sb-endpoints-list {
+    max-height: 300px;
+    overflow: auto;
+}
+.sb-endpoints-list-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: default;
+}
+.sb-endpoints-list-item:hover {
+    background-color: #f5f5f5;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+form input {
+    height: 28px !important;
+    font-size: 13px !important;
+}
+form label {
+    padding-top: 5px !important;
+    font-weight: normal;
+}
+
+
+
+.sb-left.sb-col {
+    width: 400px;
+}
+.sb-right.sb-col {
+    /*full size with left: -5px*/
+    left: 400px;
+    right: 0;
+}
+
+.sb-row {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+}
+.sb-col {
+    position: absolute;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+}
+.sb-fill {
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

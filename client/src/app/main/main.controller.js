@@ -39,7 +39,7 @@ angular.module('sbApp')
 
     $scope.startQueryExecutionModal = function () {
       var modalInstance = $modal.open({
-        templateUrl: 'app/queryExecutionModal/queryExecution.tpl.html',
+        templateUrl: 'src/app/queryExecutionModal/queryExecution.tpl.html',
         controller: 'QueryExecutionModal',
         size: 'lg'
       });

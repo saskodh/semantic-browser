@@ -1,0 +1,242 @@
+<div class="header navbar navbar-default" role="navigation">
+    <!--Brand and toggle get grouped for better mobile display-->
+    <!--            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>-->
+
+    <div class="container-fluid">
+
+        <div class="navbar-left">
+            <div class="navbar-item">
+                <div class="navbar-item-cell">
+                    <div class="dropdown">
+                        <button class="navbar-item-control dropdown-toggle" data-toggle="dropdown"
+                                title="Click to go back, right click to see history">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">resource</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Show full history</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="navbar-item-cell">
+                    <div class="dropdown">
+                        <button class="navbar-item-control dropdown-toggle" data-toggle="dropdown"
+                                title="Click to go forward, right click to see history">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="navbar-item-cell">
+                    <button class="navbar-item-control" title="Reload this resource">
+                        <span class="glyphicon glyphicon-repeat"></span>
+                    </button>
+                    <button class="navbar-item-control" title="Stop resource loading" style="display: none;">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="navbar-item-cell">
+                    <button class="navbar-item-control" title="Go to home resource" disabled="disabled">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="navbar-item">
+                <div class="navbar-item-cell">
+                    <div class="dropdown">
+                        <button class="navbar-item-control dropdown-toggle" data-toggle="dropdown"
+                                title="Bookmark this resource">
+                            <span class="glyphicon glyphicon-star"></span>
+                        </button>
+                        <div class="sb-bookmarks dropdown-menu" role="menu">
+                            <div class="sb-bookmarks-title">Bookmarks</div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group form-group-sm">
+                                    <div class="col-sm-3">
+                                        <label for="txtBookmarkName" class="control-label">Name:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="txtBookmarkName"/>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <div class="col-sm-3">
+                                        <label for="txtBookmarkFolderName" class="control-label">Folder:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="txtBookmarkFolderName"/>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="pull-right">
+                                <button class="btn btn-default btn-sm">Remove</button>
+                                <button class="btn btn-default btn-sm">Edit</button>
+                                <button class="btn btn-primary btn-sm">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="navbar-item-cell">
+                    <div class="dropdown">
+                        <button class="navbar-item-control dropdown-toggle" data-toggle="dropdown" title="Options">
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a>Action</a></li>
+                            <li><a>Execute </a></li>
+                            <li><a>About</a></li>
+                            <li class="divider"></li>
+                            <li><a>Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-center">
+            <div class="navbar-center-item">
+                <div class="navbar-item-cell">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-btn dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span style="padding-right: 4px">Dbpedia</span>
+                                <span class="caret"></span>
+                            </button>
+                            <div class="sb-endpoints dropdown-menu" role="menu">
+                                <!--Stop click propagation on form inside dropdown-->
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group form-group-sm">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" placeholder="Search endpoint">
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="sb-endpoints-list">
+                                    <div class="sb-endpoints-list-item">Cras justo odio</div>
+                                    <div class="sb-endpoints-list-item">Dapibus ac facilisis in</div>
+                                    <div class="sb-endpoints-list-item">Morbi leo risus</div>
+                                    <div class="sb-endpoints-list-item">Porta ac consectetur ac</div>
+                                    <div class="sb-endpoints-list-item">Vestibulum at eros</div>
+                                </div>
+                            </div>
+                        </div><!-- /btn-group -->
+                        <input type="text" class="form-control" placeholder="Search resource">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </div><!-- /input-group -->
+                    <!--<input type="text" class="form-control input-sm" placeholder="Search"/>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="main sb-row">
+    <div class="sb-left sb-col">
+        <div class="sidebar">
+            <div class="short-description">
+                <div class="sb-panel">
+                    <!--TODO: document this hacks-->
+                    <div class="" style="padding: 10px; overflow: hidden; width: 100%;">
+                        <div class="sb-short-description-image">
+                            <img src="..." class="img-thumbnail"/>
+                        </div>
+                        <div>
+                            <div class="sb-short-description-title">Resource name</div>
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor faucibus dapibus.
+                                Donec vestibulum nisi a arcu consequat convallis.
+                                Vestibulum tincidunt ipsum quis mauris laoreet, sit amet imperdiet nunc commodo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="literals">
+                <div class="literals-container sb-panel">
+                    <div class="">
+                        <div class="sb-literal-item">
+                            <button type="button" class="close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <div class="sb-literal-item-title">Literal item title</div>
+                            <div class="sb-literal-item-separator"></div>
+                            <div class="sb-literal-item-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor faucibus dapibus.
+                                Donec vestibulum nisi a arcu consequat convallis.
+                                Vestibulum tincidunt ipsum quis mauris laoreet, sit amet imperdiet nunc commodo.
+                            </div>
+                        </div>
+                        <div class="sb-literal-item">
+                            <button type="button" class="close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <div class="sb-literal-item-title">Literal item title</div>
+                            <div class="sb-literal-item-separator"></div>
+                            <div class="sb-literal-item-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor faucibus dapibus.
+                                Donec vestibulum nisi a arcu consequat convallis.
+                                Vestibulum tincidunt ipsum quis mauris laoreet, sit amet imperdiet nunc commodo.
+                            </div>
+                        </div>
+                        <div class="sb-literal-item">
+                            <button type="button" class="close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <div class="sb-literal-item-title">Literal item title</div>
+                            <div class="sb-literal-item-separator"></div>
+                            <div class="sb-literal-item-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor faucibus dapibus.
+                                Donec vestibulum nisi a arcu consequat convallis.
+                                Vestibulum tincidunt ipsum quis mauris laoreet, sit amet imperdiet nunc commodo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sb-right sb-col">
+        <div class="sb-split-screen sb-col"></div>
+        <div class="content sb-col">
+            <div class="graph page sb-panel sb-panel-rounded"></div>
+        </div>
+    </div>
+</div>
+
+<div class="footer footer-nav sb-row">
+    Semantic graph browser
+</div>
