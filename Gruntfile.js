@@ -136,8 +136,8 @@ module.exports = function (grunt) {
       ],
       test: {
         src: [
-          '<%= yeoman.client %>/{src,components}/**/*.mock.js',
-          '<%= yeoman.client %>/{src,components}/**/*.spec.js'
+          '<%= yeoman.client %>/{src,components}/**/*.spec.js',
+          '<%= yeoman.client %>/{src,components}/**/*.mock.js'
         ]
       }
     },
@@ -365,7 +365,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.client %>',
         dest: '.tmp/',
-        src: ['{css,components}/**/*.css']
+        src: ['{src,components}/**/*.css']
       }
     },
 
