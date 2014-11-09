@@ -1,6 +1,6 @@
 'use strict';
 
-describe('sparql endpoint service unit test', function() {
+ddescribe('sparql endpoint service unit test', function() {
 
   var sparqlEndpoint = null;
   var $httpBackend = null;

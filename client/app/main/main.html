@@ -1,4 +1,4 @@
-<div class="container" ng-controller="MainCtrl">
+<div class="container-fluid">
     <div class="header row">
         <!--<div ng-include="'views/navbar.html'" ng-controller="MainCtrl"></div>-->
 
@@ -18,36 +18,85 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
+                        <li context-menu>
+                            <a class="btn" ng-disabled="!hasBackResources()" ng-click="btnBackClick()"
+                               context-menu-trigger="contextmenu"
+                               title="Click to go back. Right click to see history.">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <div context-menu-element class="dropdown-menu" role="menu">
+                                <ul>
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="btn" ng-disabled="!hasForwardResources()" ng-click="btnForwardClick()">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn" ng-show="!isLoaderActive" ng-click="btnReloadClick()"
+                               title="Reload this resource.">
+                                <span class="glyphicon glyphicon-repeat"></span>
+                            </a>
+                            <a class="btn" ng-show="isLoaderActive" ng-click="btnStopLoadingClick()"
+                               title="Stop resource loading.">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
                         </li>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" ng-model="addressBar"/>
-                              <span class="input-group-btn">
+                            <input type="text"
+                                   class="form-control"
+                                   ng-model="addressBar"
+                                   placeholder="Search for a resource"
+                                   typeahead="resource for resource in searchResource()"
+                                   typeahead-loading="loadingResources"
+                                   typeahead-min-length="3"
+                                   typeahead-wait-ms="500">
+
+                            <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" ng-click="btnGoClick()">
-                                    <span class="glyphicon glyphicon-globe" ng-show="isResource()"></span>
-                                    <span class="glyphicon glyphicon-search" ng-hide="isResource()"></span>
+                                    <i ng-show="loadingResources" class="glyphicon glyphicon-refresh"></i>
+                                    <span class="glyphicon glyphicon-globe" ng-show="!loadingResources && isResource()"></span>
+                                    <span class="glyphicon glyphicon-search" ng-show="!loadingResources && !isResource()"></span>
                                 </button>
-                              </span>
+                          </span>
                         </div><!-- /input-group -->
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
+                        <li>
+                            <a class="btn btn-icon" title="Bookmark this resource">
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-icon" ng-disabled="isOnHomeResource()" ng-click="btnHomeClick()"
+                               title="Go to home resource.">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn" ng-click="startQueryExecutionModal()"
+                               title="Execute own sparql query.">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <div inline-menu="inlineMenuConfig"></div>
+                        </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" title="Bookmark">
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
@@ -63,80 +112,59 @@
     </div>
 
     <div class="content row" resizable>
-        <!--<div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>-->
+        <div class="loader" ng-show="isLoaderActive">
+            <img src="../assets/images/loader.gif"/>
+        </div>
 
         <div id="literals" class="">
+<!--
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+-->
+            <div class="resourceShortInfo">
+                <div class="panel panel-default">
 
-            <div class="well well-sm">
-
-                <div style="margin-bottom: 10px">
+                    <div style="margin-bottom: 10px">
                       <span>
-                          <b>Resource name</b>
+                          <b>{{resourceShortInfo.name}}</b>
                       </span>
+                    </div>
+
+                    <div id="abstarct-content" style="text-align: justify">
+                        <img style="margin-left: 20px; width: 90px; height: 100px"
+                             ng-src="{{resourceShortInfo.image}}"
+                             class="pull-right"/>
+                        {{resourceShortInfo.shortDescription}}
+                    </div>
+
                 </div>
-
-                <div id="abstarct-content" style="text-align: justify">
-                    <img style="margin-left: 20px; width: 90px; height: 100px"
-                         src="https://lh4.googleusercontent.com/-l9AijjgWVZM/AAAAAAAAAAI/AAAAAAABqlc/7IoQt2FfdwY/photo.jpg"
-                         class="pull-right"
-                         data-toggle="modal" data-target="#myModal"  />
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor faucibus dapibus. Donec vestibulum nisi a arcu consequat convallis. Vestibulum tincidunt ipsum quis mauris laoreet, sit amet imperdiet nunc commodo.
-                </div>
-
             </div>
 
-            <div class="well well-sm" style="overflow-y: auto">
-                <table class="table table-bordred table-striped">
-                    <thead>
-                    <th>Literals</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div>
-                                <h5 style="border-bottom: solid #000000">Name of the resource</h5>
-                                <div class="">
-                                    https://github.com/IronSummitMedia/
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <h5 style="border-bottom: solid #000000">Name of the resource</h5>
-                                <div class="">
-                                    https://github.com/IronSummitMedia/
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div>
 
+            </div>
+            <div class="panel panel-default" resizable inside-resizable>
+                <div class="literalTemplate" ng-repeat="literal in literalsData">
+                    <span>{{literal.name}}</span>
+                    <ul>
+                        <li ng-repeat="literalValue in literal.literals">
+                            {{literalValue.value}}
+                            <span class="pull-right">{{literalValue.language}}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div resizer class="resajz"></div>
 
-        <div id="graph" class="">
-
-            <h3>Graph</h3>
+        <div id="graph" graph="graphData" graph-node-double-click="nodeDoubleClick(node)">
 
         </div>
-
-        <!--  <div id="sidebar-resizer"
-               resizer="vertical"
-               resizer-width="6"
-               resizer-left="#literals"
-               resizer-right="#graph"
-               resizer-max="400">
-          </div>-->
     </div>
 
     <div class="footer row">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <div class="pull-right">
+            <span class="glyphicon glyphicon-heart"></span> semantic browser 2014
+        </div>
     </div>
 </div>

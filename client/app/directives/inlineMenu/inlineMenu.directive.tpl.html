@@ -1,0 +1,13 @@
+<div class="dropdown">
+  <button type="button" ng-if="config.menuText" class="btn btn-link btn-inline btn-xs dropdown-toggle">{{config.menuText}}&nbsp;
+    <small class="orca-icon-chevron-s"></small>
+  </button>
+  <button type="button" ng-if="!config.menuText" class="btn btn-icon dropdown-toggle" data-toggle="dropdown">
+    <span class="glyphicon glyphicon-cog"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li ng-repeat="choice in config.items" ng-hide="choice.visible === false">
+      <a ng-click="choice.clickCallback(target)" class="dropdown-toggle">{{choice.labelText}}</a>
+    </li>
+  </ul>
+</div>

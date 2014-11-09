@@ -26,6 +26,7 @@ angular.module('sbApp')
         resizer.resizableElement.css({
           width: newElementWidth + 'px'
         });
+        $scope.$digest();
       };
 
       var mouseUp = function() {

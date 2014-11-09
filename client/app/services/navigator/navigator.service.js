@@ -40,6 +40,10 @@ angular.module('sbApp')
       }
     };
     var pushNext = function(nextUrl) {
+      // NOTE: if it has successors remove them
+      if(index !== navArray.length - 1) {
+        navArray = navArray.slice(0, index+1);
+      }
       index++;
       navArray.push(nextUrl);
     };

@@ -1,10 +1,15 @@
 'use strict';
 
 var HTTP_CONFIG_PARAM = 'http-config';
-var http = require('http');
+var http = require('follow-redirects').http;
 var url = require('url');
 
+var isRedirect = function (response) {
+  return response.statusCode >= 300 && response.statusCode < 400 && hasHeader('location', response.headers);
+};
+
 var getOptionsFrom$httpConfig = function($httpConfig) {
+  // TODO: url.parse throws exception
   var decodedUrl = url.parse($httpConfig.url);
 
   // TODO: add more features
@@ -24,7 +29,7 @@ exports.index = function(req, res) {
     http.get(options, function(proxyRes) {
       proxyRes.pipe(res);
     }).on('error', function(e) {
-      // TODO: logging here
+      // TODO: logging here (see express morgan)
       console.log("Got error: " + e.message);
       res.json({
         'API-Error': 'Invalid request'

@@ -5,7 +5,35 @@
 }
 #graph {
     overflow: hidden;
-    padding-left: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.resourceShortInfo div{
+    padding: 4px;
+}
+
+.content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.footer {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    margin-top: 10px;
+}
+
+.panel {
+    margin-bottom: 0;
+}
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 10px;
 }
 
 .resajz {
@@ -43,5 +71,121 @@
 
 /* TODO: fix this with auto width */
 .navbar-form {
-    width: 690px;
+    width: 850px;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.node {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.link {
+    stroke: #ccc;
+}
+
+.text {
+    pointer-events: none;
+    font: 14px sans-serif;
+    fill: #666;
+    stroke: none;
+    opacity: 0;
+}
+
+#info .panel-body {
+    overflow: auto;
+}
+
+.literalTemplate {
+    border-top-style: solid;
+    padding: 5px;
+}
+
+.literalTemplate span {
+    font-weight: bold;
+}
+
+.literalTemplate p {
+    padding-top: 5px;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background-color:#ffffff;
+    opacity:0.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*.loader img {
+    position: absolute;
+}*/
+
+.circular {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    /*
+        background: url(http://link-to-your/image.jpg) no-repeat;
+    */
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.navbar li a {
+    padding-bottom: 0;
+}
+
+.glyphicon-remove {
+    font-size: 17px;
+    top: 2px;
+}
+
+.glyphicon-repeat {
+    font-weight: bolder;
+    top: 2px;
+}
+
+.glyphicon-star {
+    font-size: 18px;
+    color: #FFF242;
+    text-shadow: -1px 0 darkgray, 0 1px darkgray, 1px 0 darkgray, 0 -1px darkgray;
+}
+
+.glyphicon-star-empty {
+    font-size: 18px;
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.CodeMirror pre.CodeMirror-placeholder {
+    color: #999;
 }

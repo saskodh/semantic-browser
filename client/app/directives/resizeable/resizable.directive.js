@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .directive('resizable', function($window) {
+  .directive('resizable', function($window, $timeout) {
     return {
       link: function($scope, $element, attrs) {
         //TODO: check if can be removed
@@ -14,7 +14,7 @@ angular.module('sbApp')
           childElem.css('overflow', 'auto');
         });
 
-        var minHeight = '200';
+        var minHeight = '10';
         if(attrs.resizableMinHeight) {
           minHeight = parseFloat(minHeight);
         }
@@ -23,24 +23,42 @@ angular.module('sbApp')
          * Calculates max available height.
          * */
         var calculateAvailableHeight = function() {
-          var windowHeight = angular.element($window).height();
+          var parentHeight = angular.element($window).outerHeight(true);
+
+          if (angular.isDefined(attrs.insideResizable)) {
+            parentHeight = angular.element($element.parent()).outerHeight(true);
+          }
 
           var siblingsSumHeight = 0;
           $element.siblings().each(function(index, sibling) {
-            siblingsSumHeight += angular.element(sibling).height();
+            siblingsSumHeight += angular.element(sibling).outerHeight(true);
           });
 
-          var elementHeight = windowHeight - siblingsSumHeight;
+          var elementHeight = parentHeight - siblingsSumHeight;
 
           return (elementHeight > minHeight ? elementHeight : minHeight) + 'px';
         };
 
-        $element.css('height', calculateAvailableHeight());
+        //$element.css('height', calculateAvailableHeight());
 
         // Set on resize
-        angular.element($window).bind('resize', function () {
-          $element.css('height', calculateAvailableHeight());
-        });
+        if (!angular.isDefined(attrs.insideResizable)) {
+          angular.element($window).bind('resize', function () {
+            $element.css('height', calculateAvailableHeight());
+            $scope.$digest();
+          });
+
+        } else {
+          $scope.$watch(function () {
+            return angular.element($element.parent()).height();
+          }, function () {
+            $element.css('height', calculateAvailableHeight());
+          })
+        }
+        $timeout(function () {
+          angular.element($window).triggerHandler('resize');
+        }, 0);
+
       }
     };
   });
