@@ -1,0 +1,19 @@
+<div class="sb-endpoints-container">
+    <form class="form-horizontal" role="form">
+        <div class="form-group form-group-sm">
+            <div class="col-sm-12">
+                <input type="text"
+                       ng-model="searchEndpoint"
+                       class="form-control"
+                       placeholder="Search endpoint"/>
+            </div>
+        </div>
+    </form>
+    <div class="sb-endpoints-list">
+        <div ng-repeat="endpoint in endpoints | filter:searchEndpoint" ng-click="selectEndpoint(endpoint)"
+             class="sb-endpoints-list-item">
+            <div class="sb-endpoints-list-item-name">{{endpoint.name}}</div>
+            <div class="sb-endpoints-list-item-uri">{{endpoint.location}}</div>
+        </div>
+    </div>
+</div>

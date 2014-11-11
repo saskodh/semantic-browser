@@ -1,0 +1,18 @@
+.sb-choose-endpoint {}
+.sb-endpoints-container {
+    min-width: 300px;
+    padding: 15px 15px 10px 15px;
+}
+.sb-endpoints-list {
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.sb-endpoints-list-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: default;
+}
+.sb-endpoints-list-item:hover {
+    background-color: #f5f5f5;
+}
