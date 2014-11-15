@@ -1,0 +1,25 @@
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <th ng-repeat="headerColumn in resultsTableData.headerColumns">{{headerColumn}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in resultsTableData.currentPageTableRows">
+        <td ng-repeat="columnData in row.rowColumns">
+            <span ng-if="!isResource(columnData)">{{columnData.value}}</span>
+            <a href="#" ng-if="isResource(columnData)" ng-click="visualizeResource(columnData)" >{{columnData.value}}</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div style="text-align: center;">
+    <div pagination class="pagination-sm"
+                total-items="pagerConfig.totalItems"
+                items-per-page="pagerConfig.itemsPerPage"
+                max-size="pagerConfig.maxSize"
+                ng-model="pagerConfig.currentPage"
+                ng-model="pagerConfig.currentPage"
+                ng-change="updatePagination()">
+    </div>
+</div>
