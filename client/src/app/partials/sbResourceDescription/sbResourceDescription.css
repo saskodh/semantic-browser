@@ -1,0 +1,27 @@
+.sb-resource-description{
+    display: table-row;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    /*
+        padding: 5px;
+    */
+}
+.sb-resource-description > .sb-panel {
+    margin: 0 0 5px 0;
+}
+.sb-short-description-title {
+    padding-top: 5px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 20px;
+}
+.sb-short-description-image {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+.sb-short-description-image > img {
+    width: 76px;
+    height: 83px;
+}
