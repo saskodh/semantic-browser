@@ -1,0 +1,16 @@
+<div class="literals-container sb-panel">
+    <div class="">
+        <div class="sb-literal-item" ng-repeat="literal in literals">
+            <button type="button" class="close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+                <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--<span>en</span>
+                <span class="caret"></span>-->
+            </button>
+            <div class="sb-literal-item-title" ng-bind="literal.name"></div>
+            <div class="sb-literal-item-separator"></div>
+            <div class="sb-literal-item-content" ng-bind="literal.values[0].value"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+.sb-resource-literals{
+    display: table-row;
+    height: 100%;
+}
+.literals-container {
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    margin-bottom: -2px;
+}
+.literals-container.sb-panel {
+    padding: 0;
+    margin: 0;
+}
+.sb-literal-item {
+    padding: 10px;
+    border-bottom: 1px solid #dca7a7;
+}
+.sb-literal-item:hover {
+    background-color: rgba(220, 167, 167, 0.30);
+}
+
+button.close {
+    margin-top: -5px;
+}
+button.close .glyphicon-cog {
+    font-size: 14px;
+}
+
+.sb-literal-item-title {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.sb-literal-item-separator {
+    border-bottom: 1px solid #ddd;
+    margin-left: -4px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
