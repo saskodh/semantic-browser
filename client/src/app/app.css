@@ -1,47 +1,117 @@
-/*
-
-*/
-/**
- * Bootstrap Fonts
- *//*
-
-
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
-    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+.body {
+    margin: 0;
+}
+.page {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
-*/
-/**
- *Font Awesome Fonts
- *//*
+.header {
 
-
-@font-face {
-    font-family: 'FontAwesome';
-    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
-    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+}
+.main {
+    top: 50px;
+    bottom: 20px;
 }
 
-*/
-/**
- * App-wide Styles
- *//*
-
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+.footer {
+    height: 20px;
+    bottom: 0;
 }
-*/
+.footer-nav {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+}
+
+.sidebar {
+    display: table;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.content {
+    left: 5px;
+    right: 0;
+}
+
+.sb-split-screen {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 5px;
+    left: 0;
+    background-color: darkgray;
+    cursor: e-resize;
+}
+
+.sb-panel {
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+.sb-panel-rounded {
+    border-radius: 4px;
+}
+
+.sidebar .sb-panel {
+
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+
+.sb-left.sb-col {
+    width: 400px;
+}
+.sb-right.sb-col {
+    /*full size with left: -5px*/
+    left: 400px;
+    right: 0;
+}
+
+.sb-row {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+}
+.sb-col {
+    position: absolute;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+}
+.sb-fill {
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*Bookmarks window*/
+.sb-bookmarks {
+    width: 270px;
+    padding: 15px 15px 10px 15px;
+    text-align: left;
+}
+.sb-bookmarks-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #777;
+}

@@ -7,17 +7,30 @@ angular.module('sbApp', [
   'ngRoute',
   'ui.bootstrap'
 ])
-  .constant('SB_APP_BACKEND', {
-    'ENDPOINTS': 'api/endpoints'
+  .provider('sbAppBackend', function () {
+    var routes = {};
+    this.registerBackendRoute = function(key, route) {
+      routes[key] = route;
+    };
+    var getBackendRoute = function (key) {
+      return routes[key];
+    };
+
+    this.$get = function () {
+      return {
+        getRoute: getBackendRoute
+      }
+    }
   })
-  .constant('SB_APP_EVENTS', {
-    'CHANGE_ENDPOINT': 'change_endpoint'
-  })
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider) {
     $routeProvider
+      .when('/resource/:resourceUri', {
+        templateUrl: 'src/app/sbApp.tpl.html',
+        controller: 'SbAppController'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/resource/example'
       });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   });
