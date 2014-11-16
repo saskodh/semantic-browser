@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('sbApp')
-
-  .factory('sbChooseEndpoint', function (SB_APP_BACKEND, $http, $q) {
+  .constant('SB_ENDPOINTS', 'sb_endpoints')
+  .config(function (sbAppBackendProvider, SB_ENDPOINTS) {
+    sbAppBackendProvider.registerBackendRoute(SB_ENDPOINTS, '/api/endpoints');
+  })
+  .factory('sbChooseEndpoint', function (sbAppBackend, SB_ENDPOINTS, $http, $q) {
 
     var _endpointsList = null;
 
     var loadEndpointList = function () {
-      return $http.get(SB_APP_BACKEND.ENDPOINTS).then(function (response) {
+      return $http.get(sbAppBackend.getRoute(SB_ENDPOINTS)).then(function (response) {
         _endpointsList = response.data;
         return _endpointsList;
       });

@@ -123,30 +123,15 @@
             <div class="navbar-center-item">
                 <div class="navbar-item-cell">
                     <div class="input-group input-group-sm">
-                        <div class="input-group-btn dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span style="padding-right: 4px">Dbpedia</span>
-                                <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu" role="menu" sb-choose-endpoint>
-                                <!--Stop click propagation on form inside dropdown
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group form-group-sm">
-                                        <div class="col-sm-12">
-                                            <input type="text" class="form-control" placeholder="Search endpoint">
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="sb-endpoints-list">
-                                    <div class="sb-endpoints-list-item">Cras justo odio</div>
-                                    <div class="sb-endpoints-list-item">Dapibus ac facilisis in</div>
-                                    <div class="sb-endpoints-list-item">Morbi leo risus</div>
-                                    <div class="sb-endpoints-list-item">Porta ac consectetur ac</div>
-                                    <div class="sb-endpoints-list-item">Vestibulum at eros</div>
-                                </div>-->
-                            </div>
-                        </div><!-- /btn-group -->
-                        <input type="text" class="form-control" placeholder="Search resource">
+                        <div class="input-group-btn dropdown" sb-choose-endpoint></div>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="navigation.addressBar"
+                               placeholder="Search for a resource"
+                               typeahead="resource for resource in searchResource(navigation.addressBar)"
+                               typeahead-loading="loadingResources"
+                               typeahead-min-length="3"
+                               typeahead-wait-ms="300">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default">
                                 <span class="glyphicon glyphicon-search"></span>
