@@ -67,7 +67,9 @@ angular.module('sbApp')
     };
 
     var getResource = function(resourceUri) {
-      return sbEndpointAccess.get(resourceUri);
+      return sbEndpointAccess.get(resourceUri).then(function (response) {
+        return response.data;
+      });
     };
 
     return {
