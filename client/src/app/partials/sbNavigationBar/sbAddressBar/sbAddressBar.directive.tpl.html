@@ -1,0 +1,20 @@
+<form ng-submit="submitAction(addressBar)">
+    <div class="input-group input-group-sm">
+        <div class="input-group-btn dropdown" sb-choose-endpoint></div>
+        <input type="text"
+               class="form-control"
+               ng-model="addressBar"
+               placeholder="Search for a resource"
+               typeahead="resource for resource in searchResource(addressBar)"
+               typeahead-loading="searchingResources"
+               typeahead-min-length="3"
+               typeahead-wait-ms="300">
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <span ng-show="loadingResources" class="glyphicon glyphicon-refresh"></span>
+                <span class="glyphicon glyphicon-globe" ng-show="!loadingResources && isResource(addressBar)"></span>
+                <span class="glyphicon glyphicon-search" ng-show="!loadingResources && !isResource(addressBar)"></span>
+            </button>
+        </div>
+    </div>
+</form>

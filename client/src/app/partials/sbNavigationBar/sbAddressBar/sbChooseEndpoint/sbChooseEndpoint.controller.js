@@ -8,11 +8,13 @@ angular.module('sbApp')
     $scope.textLengthLimit = 50;
     $scope.currentEndpointName = '';
 
-    sbChooseEndpoint.getEndpoints().then(function (endpoints) {
-      $scope.endpoints = endpoints;
-    });
     $scope.selectEndpoint = function (selectedEndpoint) {
       $scope.currentEndpointName = selectedEndpoint.name.substring(0, 10);
       sbEndpoint.setCurrentEndpoint(selectedEndpoint);
     };
+    $scope.selectEndpoint(sbChooseEndpoint.getDefaultEndpoint());
+
+    sbChooseEndpoint.getEndpoints().then(function (endpoints) {
+      $scope.endpoints = endpoints;
+    });
   });
