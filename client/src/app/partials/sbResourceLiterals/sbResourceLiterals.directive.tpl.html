@@ -10,7 +10,7 @@
             </button>
             <div class="sb-literal-item-title" ng-bind="literal.name"></div>
             <div class="sb-literal-item-separator"></div>
-            <div class="sb-literal-item-content" ng-bind="literal.values[0].value"></div>
+            <div class="sb-literal-item-content" ng-bind="literal.literals | sbLiteralLanguage"></div>
         </div>
     </div>
 </div>

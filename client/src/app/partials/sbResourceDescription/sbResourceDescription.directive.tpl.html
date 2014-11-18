@@ -2,11 +2,11 @@
     <!--TODO: document this hacks-->
     <div class="" style="padding: 10px; overflow: hidden; width: 100%;">
         <div class="sb-short-description-image">
-            <img ng-src="resourceImage" class="img-thumbnail"/>
+            <img ng-src="{{resource.image[0]}}" class="img-thumbnail"/>
         </div>
         <div>
-            <div class="sb-short-description-title" ng-bind="resourceName"></div>
-            <div ng-bind="resourceDescription"></div>
+            <div class="sb-short-description-title" ng-bind="resource.title[0].literals | sbLiteralLanguage"></div>
+            <div ng-bind="resource.description[0].literals | sbLiteralLanguage | limitTo:descriptionLimit"></div>
         </div>
     </div>
 </div>
