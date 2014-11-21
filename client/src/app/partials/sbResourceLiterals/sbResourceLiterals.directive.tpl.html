@@ -1,7 +1,7 @@
 <div class="literals-container sb-panel">
     <div class="">
-        <div class="sb-literal-item" ng-repeat="literal in literals">
-            <button type="button" class="close">
+        <div class="sb-literal-item animate-hide" ng-repeat="literal in literals" ng-hide="literal.hidden">
+            <button type="button" class="close" ng-click="literal.hidden = true">
                 <span aria-hidden="true">&times;</span>
                 <span class="sr-only">Close</span>
                 <!--<span class="glyphicon glyphicon-cog"></span>-->
