@@ -82,9 +82,9 @@
     float: left;
     width: 100%;
     margin-bottom: 5px;
-/*
-    padding: 5px;
-*/
+    /*
+        padding: 5px;
+    */
 }
 .short-description > .sb-panel {
     margin: 0 0 5px 0;
@@ -148,7 +148,7 @@ button.close {
     color: #777;
 }
 
-/*Endpoints window*//*
+/*Endpoints window*/
 .sb-endpoints {
     min-width: 270px;
     padding: 15px 15px 10px 15px;
@@ -164,14 +164,14 @@ button.close {
 }
 .sb-endpoints-list-item:hover {
     background-color: #f5f5f5;
-}*/
+}
 
 .form-group {
     margin-bottom: 10px;
 }
 
 .form-control {
-    border-radius: 0;
+    border-radius: 0px;
 }
 form input {
     height: 28px !important;
