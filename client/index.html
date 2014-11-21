@@ -19,16 +19,25 @@
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
-    <link rel="stylesheet" href="src/app/app.css">
+    <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/directives/sbSpinner/sbSpinner.directive.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/partials/modals/sbAboutModal/sbAboutModal.css">
+      <link rel="stylesheet" href="app/partials/modals/sbHelpModal/sbHelpModal.css">
+      <link rel="stylesheet" href="app/partials/modals/sbQueryExecution/sbQueryEdit/sbQueryEdit.css">
+      <link rel="stylesheet" href="app/partials/modals/sbQueryExecution/sbQueryExecution.css">
+      <link rel="stylesheet" href="app/partials/modals/sbQueryExecution/sbQueryResults/sbQueryResults.css">
+      <link rel="stylesheet" href="app/partials/modals/sbSettingsModal/sbSettingsModal.css">
+      <link rel="stylesheet" href="app/partials/sbNavigationBar/sbAddressBar/sbAddressBar.css">
+      <link rel="stylesheet" href="app/partials/sbNavigationBar/sbAddressBar/sbChooseEndpoint/sbChooseEndpoint.css">
+      <link rel="stylesheet" href="app/partials/sbNavigationBar/sbAppMenu/sbAppMenu.css">
+      <link rel="stylesheet" href="app/partials/sbNavigationBar/sbNavigationBar.css">
+      <link rel="stylesheet" href="app/partials/sbResourceDescription/sbResourceDescription.css">
+      <link rel="stylesheet" href="app/partials/sbResourceLiterals/sbResourceLiterals.css">
+      <link rel="stylesheet" href="app/partials/sbResourceVisualization/sbResourceVisualization.css">
       <link rel="stylesheet" href="components/modal/modal.css">
-      <link rel="stylesheet" href="src/app/app.css">
-      <link rel="stylesheet" href="src/app/directives/sbSpinner/sbSpinner.directive.css">
-      <link rel="stylesheet" href="src/app/main/main.css">
-      <link rel="stylesheet" href="src/app/partials/sbChooseEndpoint/sbChooseEndpoint.css">
-      <link rel="stylesheet" href="src/styleguide/content.css">
-      <link rel="stylesheet" href="src/styleguide/navbar.css">
-      <link rel="stylesheet" href="src/styleguide/styleguide.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -68,6 +77,7 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/codemirror/lib/codemirror.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
       <!-- endbower -->
     <script src="bower_components/codemirror/addon/edit/closebrackets.js"></script>
     <script src="bower_components/codemirror/addon/edit/matchbrackets.js"></script>
@@ -75,37 +85,74 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
-        <script src="src/app/app.js"></script>
+        <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/directives/codeMirrorIde/codeMirrorIde.directive.js"></script>
+          <script src="app/directives/contextMenu/contextMenu.directive.js"></script>
+          <script src="app/directives/graph/graph.directive.js"></script>
+          <script src="app/directives/graph/graphDirectiveHelper.service.js"></script>
+          <script src="app/directives/inlineMenu/inlineMenu.directive.js"></script>
+          <script src="app/directives/resizeable/resizable.directive.js"></script>
+          <script src="app/directives/resizer/resizer.directive.js"></script>
+          <script src="app/directives/sbSpinner/sbSpinner.directive.js"></script>
+          <script src="app/directives/sbSplitScreen/helpers/sbSplitScreenFirst.directive.js"></script>
+          <script src="app/directives/sbSplitScreen/helpers/sbSplitScreenHandle.directive.js"></script>
+          <script src="app/directives/sbSplitScreen/helpers/sbSplitScreenSecond.directive.js"></script>
+          <script src="app/directives/sbSplitScreen/sbSplitScreen.directive.js"></script>
+          <script src="app/directives/searchableDropBox/searchableDropBox.directive.js"></script>
+          <script src="app/filters/sbLiteralLanguage/sbLiteralLanguage.filter.js"></script>
+          <script src="app/interceptors/proxyRequestInterceptor/proxyRequestInterceptor.service.js"></script>
+          <script src="app/main/main.controller.js"></script>
+          <script src="app/main/main.js"></script>
+          <script src="app/partials/modals/sbAboutModal/sbAboutModal.controller.js"></script>
+          <script src="app/partials/modals/sbAboutModal/sbAboutModal.directive.js"></script>
+          <script src="app/partials/modals/sbHelpModal/sbHelpModal.controller.js"></script>
+          <script src="app/partials/modals/sbHelpModal/sbHelpModal.directive.js"></script>
+          <script src="app/partials/modals/sbModal.service.js"></script>
+          <script src="app/partials/modals/sbQueryExecution/sbQueryEdit/sbQueryEdit.controller.js"></script>
+          <script src="app/partials/modals/sbQueryExecution/sbQueryEdit/sbQueryEdit.directive.js"></script>
+          <script src="app/partials/modals/sbQueryExecution/sbQueryExecution.controller.js"></script>
+          <script src="app/partials/modals/sbQueryExecution/sbQueryExecution.directive.js"></script>
+          <script src="app/partials/modals/sbQueryExecution/sbQueryResults/sbQueryResults.controller.js"></script>
+          <script src="app/partials/modals/sbQueryExecution/sbQueryResults/sbQueryResults.directive.js"></script>
+          <script src="app/partials/modals/sbSettingsModal/sbSettingsModal.controller.js"></script>
+          <script src="app/partials/modals/sbSettingsModal/sbSettingsModal.directive.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAddressBar/sbAddressBar.controller.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAddressBar/sbAddressBar.directive.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAddressBar/sbChooseEndpoint/sbChooseEndpoint.controller.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAddressBar/sbChooseEndpoint/sbChooseEndpoint.directive.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAddressBar/sbChooseEndpoint/sbChooseEndpoint.service.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAppMenu/sbAppMenu.controller.js"></script>
+          <script src="app/partials/sbNavigationBar/sbAppMenu/sbAppMenu.directive.js"></script>
+          <script src="app/partials/sbNavigationBar/sbNavigationBar.controller.js"></script>
+          <script src="app/partials/sbNavigationBar/sbNavigationBar.directive.js"></script>
+          <script src="app/partials/sbResourceDescription/sbResourceDescription.controller.js"></script>
+          <script src="app/partials/sbResourceDescription/sbResourceDescription.directive.js"></script>
+          <script src="app/partials/sbResourceLiterals/sbResourceLiterals.controller.js"></script>
+          <script src="app/partials/sbResourceLiterals/sbResourceLiterals.directive.js"></script>
+          <script src="app/partials/sbResourceVisualization/sbResourceVisualization.controller.js"></script>
+          <script src="app/partials/sbResourceVisualization/sbResourceVisualization.directive.js"></script>
+          <script src="app/queryExecutionModal/queryExecutionModal.controller.js"></script>
+          <script src="app/sbApp.controller.js"></script>
+          <script src="app/services/bookmark/bookmarks.service.js"></script>
+          <script src="app/services/d3/d3.service.js"></script>
+          <script src="app/services/lodash/lodash-service.js"></script>
+          <script src="app/services/mockGraphData/mockGraphData.service.js"></script>
+          <script src="app/services/navigator/navigator.service.js"></script>
+          <script src="app/services/queryBuilder/queryBuilder.service.js"></script>
+          <script src="app/services/resourceManager/resourceManager.service.js"></script>
+          <script src="app/services/resourceManager/utils/resourceFactory/resourceFactory.service.js"></script>
+          <script src="app/services/resourceManager/utils/resourceParser/resourceParser.service.js"></script>
+          <script src="app/services/sbEndpoint/sbEndpoint.service.js"></script>
+          <script src="app/services/sbEndpoint/sbEndpointAccess/sbBackendProxy/sbBackendProxy.service.js"></script>
+          <script src="app/services/sbEndpoint/sbEndpointAccess/sbCORS/sbCORS.service.js"></script>
+          <script src="app/services/sbEndpoint/sbEndpointAccess/sbEndpointAccess.service.js"></script>
+          <script src="app/services/sbEventBus/sbEventBus.service.js"></script>
+          <script src="app/services/searchService/searchService.service.js"></script>
+          <script src="app/services/sparqlEndpoint/sparqlEndpoint.service.js"></script>
+          <script src="app/services/sparqlEndpointFactory/sparqlEndpointFactory.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
-          <script src="src/app/directives/codeMirrorIde/codeMirrorIde.directive.js"></script>
-          <script src="src/app/directives/contextMenu/contextMenu.directive.js"></script>
-          <script src="src/app/directives/graph/graph.directive.js"></script>
-          <script src="src/app/directives/graph/graphDirectiveHelper.service.js"></script>
-          <script src="src/app/directives/inlineMenu/inlineMenu.directive.js"></script>
-          <script src="src/app/directives/resizeable/resizable.directive.js"></script>
-          <script src="src/app/directives/resizer/resizer.directive.js"></script>
-          <script src="src/app/directives/sbSpinner/sbSpinner.directive.js"></script>
-          <script src="src/app/directives/searchableDropBox/searchableDropBox.directive.js"></script>
-          <script src="src/app/interceptors/proxyRequestInterceptor/proxyRequestInterceptor.service.js"></script>
-          <script src="src/app/main/main.controller.js"></script>
-          <script src="src/app/main/main.js"></script>
-          <script src="src/app/partials/sbChooseEndpoint/sbChooseEndpoint.controller.js"></script>
-          <script src="src/app/partials/sbChooseEndpoint/sbChooseEndpoint.directive.js"></script>
-          <script src="src/app/partials/sbChooseEndpoint/sbChooseEndpoint.service.js"></script>
-          <script src="src/app/queryExecutionModal/queryExecutionModal.controller.js"></script>
-          <script src="src/app/services/bookmark/bookmarks.service.js"></script>
-          <script src="src/app/services/d3/d3.service.js"></script>
-          <script src="src/app/services/lodash/lodash-service.js"></script>
-          <script src="src/app/services/mockGraphData/mockGraphData.service.js"></script>
-          <script src="src/app/services/navigator/navigator.service.js"></script>
-          <script src="src/app/services/queryBuilder/queryBuilder.service.js"></script>
-          <script src="src/app/services/resourceManager/resourceManager.service.js"></script>
-          <script src="src/app/services/sparqlEndpoint/sparqlEndpoint.service.js"></script>
-          <script src="src/app/services/sparqlEndpointFactory/sparqlEndpointFactory.service.js"></script>
-          <script src="src/styleguide/styleguide.controller.js"></script>
-          <script src="src/styleguide/styleguide.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>
