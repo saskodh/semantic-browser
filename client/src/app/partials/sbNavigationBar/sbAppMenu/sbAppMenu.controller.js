@@ -1,65 +1,27 @@
 'use strict';
 
 angular.module('sbApp')
-  .controller('SbAppMenuController', function ($scope, $modal) {
+  .controller('SbAppMenuController', function ($scope, $modal, sbModal, $location) {
     $scope.sparqlEditor = function () {
-      console.log('sparql editor');
-
-      var modalInstance = $modal.open({
-        template: '<div sb-query-execution></div>',
-        size: 'lg'
-      });
+      var modalInstance = $modal.open(sbModal.get('sparql_editor'));
 
       modalInstance.result.then(function (selectedResource) {
-        $scope.addressBar = selectedResource;
+        $location.url('resource/' + selectedResource);
       }, function () {
         //$log.info('Modal dismissed at: ' + new Date());
         console.log('Modal dismissed without result.');
       });
     };
+
     $scope.settings = function () {
-      console.log('setting');
-
-      var modalInstance = $modal.open({
-        template: '<div sb-settings-modal></div>',
-        size: 'lg'
-      });
-
-      modalInstance.result.then(function (selectedResource) {
-        $scope.addressBar = selectedResource;
-      }, function () {
-        //$log.info('Modal dismissed at: ' + new Date());
-        console.log('Modal dismissed without result.');
-      });
+      $modal.open(sbModal.get('settings'));
     };
+
     $scope.about = function () {
-      console.log('about');
-
-      var modalInstance = $modal.open({
-        template: '<div sb-about-modal></div>',
-        size: 'lg'
-      });
-
-      modalInstance.result.then(function (selectedResource) {
-        $scope.addressBar = selectedResource;
-      }, function () {
-        //$log.info('Modal dismissed at: ' + new Date());
-        console.log('Modal dismissed without result.');
-      });
+      $modal.open(sbModal.get('about'));
     };
+
     $scope.help = function () {
-      console.log('help');
-
-      var modalInstance = $modal.open({
-        template: '<div sb-help-modal></div>',
-        size: 'lg'
-      });
-
-      modalInstance.result.then(function (selectedResource) {
-        $scope.addressBar = selectedResource;
-      }, function () {
-        //$log.info('Modal dismissed at: ' + new Date());
-        console.log('Modal dismissed without result.');
-      });
+      $modal.open(sbModal.get('help'));
     };
   });

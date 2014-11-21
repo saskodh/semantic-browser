@@ -5,7 +5,7 @@ angular.module('sbApp')
     return {
       require: '^sbQueryExecution',
       scope: {},
-      templateUrl: 'src/app/partials/sbQueryExecution/sbQueryResults/sbQueryResults.directive.tpl.html',
+      templateUrl: 'src/app/partials/modals/sbQueryExecution/sbQueryResults/sbQueryResults.directive.tpl.html',
       controller: 'SbQueryResultsController',
       link: function (scope, element, attrs, sbQueryExecution) {
         // NOTE: in case we want to style the container element
@@ -13,6 +13,7 @@ angular.module('sbApp')
 
         // NOTE: watch for new results
         sbQueryExecution.registerResultsListener(scope.updateResultsData);
+        scope.queryExecution = sbQueryExecution;
       }
     }
   });

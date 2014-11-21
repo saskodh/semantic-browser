@@ -5,7 +5,7 @@ angular.module('sbApp')
     return {
       require: '^sbQueryExecution',
       scope: {},
-      templateUrl: 'src/app/partials/sbQueryExecution/sbQueryEdit/sbQueryEdit.directive.tpl.html',
+      templateUrl: 'src/app/partials/modals/sbQueryExecution/sbQueryEdit/sbQueryEdit.directive.tpl.html',
       controller: 'SbQueryEditController',
       link: function (scope, element, attrs, sbQueryExecution) {
         // NOTE: in case we want to style the container element

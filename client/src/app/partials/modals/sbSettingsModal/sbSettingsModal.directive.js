@@ -3,7 +3,7 @@
 angular.module('sbApp')
   .directive('sbSettingsModal', function () {
     return {
-      templateUrl: 'src/app/partials/sbSettingsModal/sbSettingsModal.directive.tpl.html',
+      templateUrl: 'src/app/partials/modals/sbSettingsModal/sbSettingsModal.directive.tpl.html',
       scope: {},
       controller: 'SbSettingsModalController',
       link: function (scope, element) {

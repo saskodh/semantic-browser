@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .controller('SbAppController', function ($scope, $routeParams, resourceManager, SB_APP_EVENTS, sbEventBus) {
+  .controller('SbAppController', function ($scope, $routeParams, resourceManager, SB_APP_EVENTS, sbEventBus, $location) {
 
     $scope.isSpinnerActive = false;
     sbEventBus.registerListener(SB_APP_EVENTS.RESOURCE_LOAD_START, function () {
@@ -11,6 +11,5 @@ angular.module('sbApp')
       $scope.isSpinnerActive = false;
     });
 
-    var decodedResourceUrl = decodeURIComponent(decodeURI($routeParams.resourceUri));
-    resourceManager.loadResource(decodedResourceUrl);
+    resourceManager.loadResource($routeParams.resourceUri);
   });

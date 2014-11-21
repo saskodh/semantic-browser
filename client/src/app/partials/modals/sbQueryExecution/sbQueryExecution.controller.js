@@ -35,4 +35,8 @@ angular.module('sbApp')
           queryResultsTab.active = true;
         })
     };
+
+    this.visualizeResource = function (resource) {
+      $scope.modalInstance.close(resource);
+    }
   });

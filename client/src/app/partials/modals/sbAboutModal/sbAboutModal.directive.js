@@ -3,7 +3,7 @@
 angular.module('sbApp')
   .directive('sbAboutModal', function () {
     return {
-      templateUrl: 'src/app/partials/sbAboutModal/sbAboutModal.directive.tpl.html',
+      templateUrl: 'src/app/partials/modals/sbAboutModal/sbAboutModal.directive.tpl.html',
       scope: {},
       controller: 'SbAboutModalController',
       link: function (scope, element) {

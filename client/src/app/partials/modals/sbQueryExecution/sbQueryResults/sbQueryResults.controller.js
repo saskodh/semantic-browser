@@ -15,10 +15,31 @@ angular.module('sbApp')
       maxSize: 7
     };
 
+    var parseResults = function (results) {
+      var resultsData = {};
+      resultsData.headerColumns = results.head.vars;
+      resultsData.tableRows = [];
+      results.results.bindings.forEach(function (rowData) {
+        var rowColumns = [];
+        resultsData.headerColumns.forEach(function (columnName) {
+          rowColumns.push(rowData[columnName]);
+        });
+
+        resultsData.tableRows.push({ rowColumns: rowColumns });
+      });
+
+      return resultsData;
+    };
+
     // NOTE: new results handler function
     $scope.updateResultsData = function (results) {
-      console.log('i got the results', results);
-      $scope.resultsTableData = results;
+
+      $scope.resultsTableData = parseResults(results);
+
+      $scope.pagerConfig.totalItems = $scope.resultsTableData.tableRows.length;
+      $scope.pagerConfig.currentPage = 0;
+      $scope.updatePagination();
+
     };
 
     $scope.updatePagination = function () {
@@ -31,7 +52,7 @@ angular.module('sbApp')
       return cellData.type === 'uri';
     };
 
-    $scope.visualizeResource = function (resource) {
-      $modalInstance.close(resource.value);
+    $scope.selectResource = function (resource) {
+      $scope.queryExecution.visualizeResource(resource);
     };
   });
