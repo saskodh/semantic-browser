@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('sbApp')
-  .controller('SbAddressBarController', function ($scope, sbEventBus, SB_APP_EVENTS, searchService, resourceManager) {
-    $scope.addressBar = '';
+  .controller('SbAddressBarController', function ($scope, searchService, resourceManager, $location) {
+    $scope.addressBar = resourceManager.getResourceUri();
     $scope.searchingResources = false;
-    sbEventBus.registerListener(SB_APP_EVENTS.RESOURCE_LOAD_START, function (e, resourceUri) {
-      $scope.addressBar = resourceUri;
-    });
     
     var isUrl = function (text) {
       return text.search('http://') !== -1;
@@ -19,7 +16,8 @@ angular.module('sbApp')
       return searchService.getResults(searchTerm);
     };
     $scope.submitAction = function (addressBarText) {
-      if(isUrl(addressBarText)) {}
-      resourceManager.loadResource(addressBarText);
+      if(isUrl(addressBarText)) {
+        $location.url('resource/' + addressBarText);
+      }
     }
   });

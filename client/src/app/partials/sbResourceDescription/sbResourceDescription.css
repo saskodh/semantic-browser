@@ -3,9 +3,7 @@
     float: left;
     width: 100%;
     margin-bottom: 5px;
-    /*
-        padding: 5px;
-    */
+    font-size: 13px;
 }
 .sb-resource-description > .sb-panel {
     margin: 0 0 5px 0;
@@ -22,6 +20,6 @@
     margin-bottom: 10px;
 }
 .sb-short-description-image > img {
-    width: 76px;
-    height: 83px;
+    width: 85px;
+    height: 95px;
 }
