@@ -1,0 +1,15 @@
+.dropdown-menu {
+    border-radius: 0;
+}
+.dropdown-menu-item {
+    padding: 5px 10px;
+    cursor: default;
+}
+.dropdown-menu .divider {
+    margin: 5px 0;
+}
+
+.dropdown-menu-item:hover {
+    background-color: rgba(84, 130, 53, 0.9);
+    color: #ffffff;
+}
