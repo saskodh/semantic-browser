@@ -152,7 +152,9 @@ angular.module('sbApp')
       };
 
       parseRawData(parsedResource, rawData);
-      parsedResource.graphData.mainNode.image = parsedResource.description.image[0];
+      if (parsedResource.graphData.mainNode) {
+        parsedResource.graphData.mainNode.image = parsedResource.description.image[0];
+      }
 //      console.log(parsedResource);
 
       return parsedResource;

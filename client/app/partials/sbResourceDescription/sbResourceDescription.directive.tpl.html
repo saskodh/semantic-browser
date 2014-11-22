@@ -1,12 +1,17 @@
 <div class="sb-panel">
     <!--TODO: document this hacks-->
     <div class="" style="padding: 10px; overflow: hidden; width: 100%;">
-        <div class="sb-short-description-image">
+        <div class="sb-short-description-image" ng-show="resource.image[0]">
             <img ng-src="{{resource.image[0]}}" class="img-thumbnail"/>
         </div>
         <div>
-            <div class="sb-short-description-title" ng-bind="resource.title[0].literals | sbLiteralLanguage"></div>
-            <div ng-bind="resource.description[0].literals | sbLiteralLanguage"></div>
+            <div class="sb-short-description-title"
+                 ng-bind="resource.title[0].literals | sbLiteralLanguage"
+                 ng-show="resource.title[0]">
+            </div>
+            <div ng-bind="resource.description[0].literals | sbLiteralLanguage"
+                 ng-show="resource.description[0]">
+            </div>
         </div>
     </div>
 </div>
