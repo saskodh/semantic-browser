@@ -1,13 +1,15 @@
 'use strict';
 
 angular.module('sbApp')
+  .controller('SbModalHelperController', function ($scope, $modalInstance) {
+    $scope.modalInstance = $modalInstance;
+  })
   .factory('sbModal', function () {
 
     var sparqlEditor = {
       template: '<div sb-query-execution="modalInstance"></div>',
-      controller: function ($scope, $modalInstance) {
-        $scope.modalInstance = $modalInstance;
-      },
+      // ngAnnotate doest work if the controller is defined inline here
+      controller: 'SbModalHelperController',
       size: 'lg'
     };
     var settings = {
