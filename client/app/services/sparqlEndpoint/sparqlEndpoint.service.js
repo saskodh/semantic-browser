@@ -107,7 +107,7 @@ angular.module('sbApp')
       }
 
       executeQuery(queryText, queryParams).then(function (response) {
-        console.log(response.data);
+//        console.log(response.data);
         deferred.resolve(response.data);
       }, function (error) {
         deferred.reject(error);

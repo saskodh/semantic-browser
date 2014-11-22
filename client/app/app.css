@@ -20,6 +20,8 @@
 .footer {
     height: 20px;
     bottom: 0;
+    text-align: right;
+    padding: 0 10px;
 }
 .footer-nav {
     background-color: #f8f8f8;
@@ -39,12 +41,20 @@
 }
 
 .sb-split-screen {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     width: 5px;
     left: 0;
     background-color: darkgray;
     cursor: e-resize;
+}
+.sb-split-screen:active {
+    -webkit-box-shadow: 2px 0 2px 0 rgba(50, 50, 50, 0.18),
+                       -2px 0 2px 0 rgba(50, 50, 50, 0.18);
+    -moz-box-shadow:    2px 0 2px 0 rgba(50, 50, 50, 0.18),
+                       -2px 0 2px 0 rgba(50, 50, 50, 0.18);
+    box-shadow:         2px 0 2px 0 rgba(50, 50, 50, 0.18),
+                       -2px 0 2px 0 rgba(50, 50, 50, 0.18);
 }
 
 .sb-panel {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .factory('graphDirectiveHelper', function (d3) {
+  .factory('graphDirectiveHelper', function (d3, RESOURCE_TYPE) {
 
     var clickCallback = null;
     var doubleClickCallback = null;
@@ -59,8 +59,8 @@ angular.module('sbApp')
         .enter().append("g")
         .attr("class", function(d){
           var classes = 'node';
-          if (d.isMainNode) classes += ' mainNode';
-          if (d.isPredicateNode) classes += ' predicateNode';
+          if (d.type === RESOURCE_TYPE.MAIN_RESOURCE) classes += ' mainNode';
+          if (d.type === RESOURCE_TYPE.PREDICATE) classes += ' predicateNode';
           return classes;
         })
         .call(force.drag);
@@ -68,15 +68,15 @@ angular.module('sbApp')
       node.append("circle")
         .attr("class", "circle")
         .attr("r", function(d){
-          if(d.isMainNode)
+          if(d.type === RESOURCE_TYPE.MAIN_RESOURCE)
             return 30;
           return 12;
         })
         .style("fill", function(d) {
-          if(d.isMainNode && d.image){
+          if(d.type === RESOURCE_TYPE.MAIN_RESOURCE && d.image){
             return "url(#mainImage)";
           }
-          return color(d.isPredicateNode);
+          return color(d.type === RESOURCE_TYPE.PREDICATE);
         });
 
       node.append("text")
