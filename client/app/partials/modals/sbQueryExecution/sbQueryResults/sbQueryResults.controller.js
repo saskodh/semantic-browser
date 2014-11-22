@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('sbApp')
-  .controller('SbQueryResultsController', function ($scope) {
-    $scope.resultsTableData = {
+  .controller('SbQueryResultsController', function ($scope, $q) {
+    var emptyTableResultsData = {
       headerColumns: [],
       tableRows: [],
       currentPageTableRows: []
     };
+    $scope.resultsTableData = emptyTableResultsData;
+
+    $scope.parseError = null;
 
     $scope.pagerConfig = {
       itemsPerPage: 10,
@@ -15,31 +18,41 @@ angular.module('sbApp')
       maxSize: 7
     };
 
-    var parseResults = function (results) {
+    var parseResults = function (rawResults) {
+      var deferred = $q.defer();
       var resultsData = {};
-      resultsData.headerColumns = results.head.vars;
-      resultsData.tableRows = [];
-      results.results.bindings.forEach(function (rowData) {
-        var rowColumns = [];
-        resultsData.headerColumns.forEach(function (columnName) {
-          rowColumns.push(rowData[columnName]);
+      try {
+        resultsData.headerColumns = rawResults.head.vars;
+        resultsData.tableRows = [];
+        rawResults.results.bindings.forEach(function (rowData) {
+          var rowColumns = [];
+          resultsData.headerColumns.forEach(function (columnName) {
+            rowColumns.push(rowData[columnName]);
+          });
+
+          resultsData.tableRows.push({ rowColumns: rowColumns });
         });
+      } catch (error) {
+        deferred.reject(error);
+      }
 
-        resultsData.tableRows.push({ rowColumns: rowColumns });
-      });
-
-      return resultsData;
+      deferred.resolve(resultsData);
+      return deferred.promise;
     };
 
     // NOTE: new results handler function
-    $scope.updateResultsData = function (results) {
+    $scope.updateResultsData = function (rawResults) {
 
-      $scope.resultsTableData = parseResults(results);
-
-      $scope.pagerConfig.totalItems = $scope.resultsTableData.tableRows.length;
-      $scope.pagerConfig.currentPage = 0;
-      $scope.updatePagination();
-
+      parseResults(rawResults).then(function (results) {
+        $scope.resultsTableData = results;
+      }, function () {
+        $scope.resultsTableData = emptyTableResultsData;
+        $scope.parseError = 'Unable to parse the results from the query.';
+      }).finally(function () {
+        $scope.pagerConfig.totalItems = $scope.resultsTableData.tableRows.length;
+        $scope.pagerConfig.currentPage = 0;
+        $scope.updatePagination();
+      });
     };
 
     $scope.updatePagination = function () {

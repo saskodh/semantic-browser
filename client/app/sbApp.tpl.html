@@ -7,6 +7,13 @@
     </div>
     <div class="sb-left sb-col" sb-split-screen-first>
         <div class="sidebar">
+            <div class="alert alert-danger" role="alert" ng-show="resourceError">
+                <button type="button" class="close" ng-click="resourceError=null">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <div ng-bind-html="resourceError"></div>
+            </div>
             <div sb-resource-description ng-show="showResourceDescription"></div>
             <div sb-resource-literals></div>
         </div>

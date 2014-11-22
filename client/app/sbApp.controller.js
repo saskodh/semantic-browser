@@ -17,6 +17,20 @@ angular.module('sbApp')
       checkResourceDescription(resourceManager.getResourceDescription());
     });
 
+    $scope.resourceError = null;
+    sbEventBus.registerListener(SB_APP_EVENTS.ERROR, function (event, error) {
+      var errorMessage = 'Unknown error occurred while loading the resource.';
+      // is known error
+      if (error.data && error.data.error) {
+        errorMessage = error.data.type + ': ' + error.data.message;
+      }
+      if (angular.isString(error.data)) {
+        errorMessage = error.data;
+      }
+
+      $scope.resourceError = errorMessage;
+    });
+
     if ($routeParams.resourceUri === 'example') {
       resourceManager.loadMockResource();
     } else {

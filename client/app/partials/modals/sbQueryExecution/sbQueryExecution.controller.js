@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .controller('SbQueryExecutionController', function ($scope, sparqlEndpoint, _) {
+  .controller('SbQueryExecutionController', function ($scope, sbEndpoint, _) {
     var queryEditTab = {
       title: 'Query Edit',
       active: true
@@ -28,12 +28,13 @@ angular.module('sbApp')
     this.executeQuery = function (query) {
 
       $scope.isLoaderActive = true;
-      sparqlEndpoint.executeCustomQuery(query.queryText, query.defaultDataSet, query.timeout)
+      return sbEndpoint.executeQuery(query.queryText, query.defaultDataSet, query.timeout)
         .then(function (results) {
-          $scope.isLoaderActive = false;
           notifyResultsListeners(results);
           queryResultsTab.active = true;
-        })
+        }).finally(function () {
+          $scope.isLoaderActive = false;
+        });
     };
 
     this.visualizeResource = function (resource) {

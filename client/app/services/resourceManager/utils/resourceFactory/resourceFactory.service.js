@@ -55,12 +55,30 @@ angular.module('sbApp')
       }
     };
 
+    var getEmptyParsedResource = function () {
+      return {
+        uri: '',
+        description: {
+          title: [],
+          description: [],
+          image: []
+        },
+        literals: [],
+        graphData: {
+          nodes: [],
+          links: [],
+          mainNode: null
+        }
+      };
+    };
+
     return {
       createResource: createResource,
       createMainResource: createMainResource,
       createPredicate: createPredicate,
       createLiteralNode: createLiteralNode,
       createLiteral: createLiteral,
-      createLink: createLink
+      createLink: createLink,
+      getEmptyParsedResource: getEmptyParsedResource
     };
   });

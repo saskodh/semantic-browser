@@ -1,14 +1,9 @@
 'use strict';
 
 angular.module('sbApp')
-  .factory('resourceManager', function(sbEndpoint, resourceParser, mockResource, SB_APP_EVENTS, sbEventBus, _) {
-    var emptyResource = {
-      uri: '',
-      description: {},
-      literals: [],
-      graphData: {}
-    };
-    var resource = emptyResource;
+  .factory('resourceManager', function(sbEndpoint, resourceParser, mockResource, resourceFactory,
+                                       SB_APP_EVENTS, sbEventBus, _) {
+    var resource = resourceFactory.getEmptyParsedResource();
 
     var resourceObservers = [];
     var registerResourceObserver = function (listener) {
@@ -35,14 +30,20 @@ angular.module('sbApp')
 
     var loadResource = function (resourceUri) {
       sbEventBus.triggerEvent(SB_APP_EVENTS.RESOURCE_LOAD_START, resourceUri);
-      resource = emptyResource;
+      resource = resourceFactory.getEmptyParsedResource();
       resource.uri = resourceUri;
 
       sbEndpoint.getResource(resourceUri).then(function (rawResource) {
-        resource = resourceParser.parseResource(rawResource, resource.uri);
-        notifyResourceObservers();
+        resourceParser.parseResource(rawResource, resource.uri).then(function (parsedResource) {
+          resource = parsedResource;
+          notifyResourceObservers();
+        }, function (error) {
+          console.log(error);
+          sbEventBus.triggerEvent(SB_APP_EVENTS.ERROR, error);
+        });
       }, function (error) {
-
+        console.log(error);
+        sbEventBus.triggerEvent(SB_APP_EVENTS.ERROR, error);
       }).finally(function () {
         sbEventBus.triggerEvent(SB_APP_EVENTS.RESOURCE_LOAD_END);
       });

@@ -62,11 +62,14 @@ angular.module('sbApp')
     var getResults = function(searchTerm) {
       var query = createSearchQuery(searchTerm.toLowerCase());
       return sbEndpoint.executeQuery(query).then(function (rawResultsData) {
-
-        var results = parseResults(rawResultsData);
-        results = filterResults(results, searchTerm);
-        results = rankResults(results, searchTerm);
-
+        var results = [];
+        try {
+          results = parseResults(rawResultsData);
+          results = filterResults(results, searchTerm);
+          results = rankResults(results, searchTerm);
+        } catch (error) {
+          // NOTE: we can notify somehow that search is not available
+        }
         return results;
       });
     };

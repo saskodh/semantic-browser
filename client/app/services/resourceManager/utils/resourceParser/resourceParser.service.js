@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .factory('resourceParser', function (resourceFactory, _) {
+  .factory('resourceParser', function (resourceFactory, $q, _) {
 
     var TITLE_PREDICATE_NAMES = ['label'];
     var DESCRIPTION_PREDICATE_NAMES = ['comment','abstract'];
@@ -74,6 +74,7 @@ angular.module('sbApp')
                                       rawPredicate, rawPredicateUri) {
       var hasResourceFlag = false;
       // for each subject
+      if (!_.isArray(rawPredicate)) throw 'ParseException';
       _.forEach(rawPredicate, function (rawSubject) {
         var isResource = parseRawSubject(parsedResource, resourceHashMap, literalHashMap, rawPredicateUri, rawSubject);
         if (isResource) {
@@ -95,6 +96,7 @@ angular.module('sbApp')
       createResource(parsedResource, resourceHashMap, rawResourceUri);
 
       // for all his predicates
+      if (!_.isObject(rawResource)) throw 'ParseException';
       _.forOwn(rawResource, function (j, rawPredicateUri) {
         var rawPredicate = rawResource[rawPredicateUri];
         parseRawPredicate(parsedResource, resourceHashMap, literalHashMap, rawResourceUri, rawPredicate, rawPredicateUri);
@@ -105,6 +107,7 @@ angular.module('sbApp')
       var resourceHashMap = {};
       var literalHashMap = {};
 
+      if (!_.isObject(rawData)) throw 'ParseException';
       _.forOwn(rawData, function (i, rawResourceUri) {
         var rawResource = rawData[rawResourceUri];
         parseRawResource(parsedResource, resourceHashMap, literalHashMap, rawResource, rawResourceUri);
@@ -136,28 +139,29 @@ angular.module('sbApp')
     };
 
     var parseResource = function (rawData, currentResourceUri) {
-      var parsedResource = {
-        uri: currentResourceUri,
-        description: {
-          title: [],
-          description: [],
-          image: []
-        },
-        literals: [],
-        graphData: {
-          nodes: [],
-          links: [],
-          mainNode: null
+      var deferred = $q.defer();
+
+      var parsedResource = resourceFactory.getEmptyParsedResource();
+      try {
+        parsedResource.uri = currentResourceUri;
+        parseRawData(parsedResource, rawData);
+        if (parsedResource.graphData.mainNode) {
+          parsedResource.graphData.mainNode.image = parsedResource.description.image[0];
         }
-      };
 
-      parseRawData(parsedResource, rawData);
-      if (parsedResource.graphData.mainNode) {
-        parsedResource.graphData.mainNode.image = parsedResource.description.image[0];
+        deferred.resolve(parsedResource);
+      } catch (error) {
+        var knownError = {};
+        knownError.data = {
+          error: 'ParseError',
+          type: 'ParseError',
+          message: 'Resource cannot be parsed because of unknown format or structure',
+          causedBy: error
+        };
+        deferred.reject(knownError);
       }
-//      console.log(parsedResource);
 
-      return parsedResource;
+      return deferred.promise;
     };
 
     return {

@@ -1,3 +1,10 @@
+<div class="alert alert-danger" role="alert" ng-show="error">
+    <button type="button" class="close" ng-click="error=null">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <pre ng-bind="error.message"></pre>
+</div>
 <form class="form-horizontal" role="form" ng-submit="submitQuery(formData)">
     <div class="form-group">
         <label for="queryText" class="col-sm-12 control-label">Query Text</label>

@@ -3,7 +3,8 @@
 angular.module('sbApp')
   .constant('SB_APP_EVENTS', {
     'RESOURCE_LOAD_START': 'resource_load_start',
-    'RESOURCE_LOAD_END': 'resource_load_end'
+    'RESOURCE_LOAD_END': 'resource_load_end',
+    'ERROR': 'error'
   })
   .factory('sbEventBus', function ($rootScope) {
 

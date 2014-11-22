@@ -144,6 +144,31 @@
     color: #ffffff;
 }
 
+.alert {
+    margin-bottom: 5px;
+    border-radius: 0;
+}
+.alert pre {
+    margin: 0;
+    color: inherit;
+    background-color: inherit;
+    padding: 0;
+    font-size: inherit;
+    border: none;
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    word-break: normal;
+}
+.alert a {
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+}
+
 .pagination > li > a {
     border-color: #457335;
     background-color: #548235;
