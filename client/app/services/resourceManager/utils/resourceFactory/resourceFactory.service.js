@@ -14,7 +14,8 @@ angular.module('sbApp')
   .factory('resourceFactory', function (RESOURCE_TYPE) {
 
     var extractResourceName = function (resourceUri) {
-      return resourceUri.substring(resourceUri.lastIndexOf('/')+1, resourceUri.length);
+      var name = resourceUri.substring(resourceUri.lastIndexOf('/')+1, resourceUri.length);
+      return name.replace(/_/g, ' ');
     };
 
     var createResource = function (resourceUri) {

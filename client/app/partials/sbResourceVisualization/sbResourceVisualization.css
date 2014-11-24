@@ -3,19 +3,68 @@
 }
 
 /* svg styles */
+svg {
+    /*background-color: beige;*/
+}
 .node {
     stroke: #fff;
     stroke-width: 1.5px;
+}
+.node.highlight {
+    stroke: #555;
+}
+.node.lowlight {}
+.main_resource {
+    fill: #548235;
+}
+.main_resource.lowlight {
+    fill: #99cc99;
+}
+.main_resource.highlight {
+    fill: #497634;
+}
+.resource {
+     fill: #c33c3c;
+}
+.resource.highlight {
+    fill: #a93e3e;
+}
+.resource.lowlight {
+    fill: #da4040;
+}
+.predicate {
+    fill: #99ccff;
+}
+.predicate.highlight {
+    fill: #79bedb;
+}
+.predicate.lowlight{
+    fill: #ddecef;
 }
 
 .link {
     stroke: #ccc;
 }
-
-.text {
-    pointer-events: none;
-    font: 14px sans-serif;
-    fill: #666;
-    stroke: none;
-    opacity: 0;
+.link.highlight {
+    stroke: #555;
 }
+.link.lowlight {
+    stroke: #f2f2f2;
+}
+
+.node-label {
+    height: inherit;
+    width: inherit;
+    display: table-cell;
+    font-size: 5px;
+    vertical-align: middle;
+    text-align: center;
+    color: #ffffff;
+    word-break: break-all;
+    cursor: default;
+    padding: 1px;
+}
+.main_resource .node-label {
+    font-size: 7px;
+}
+.node-label:hover {}

@@ -1,29 +1,31 @@
-<div sb-navigation-bar></div>
+<div disable-graph-animation>
+    <div sb-navigation-bar></div>
 
-<div class="main sb-row" sb-split-screen>
-    <!--TODO: find better way to use the spinner avoiding isolate scope collisions-->
-    <div class="sb-spinner" ng-show="isSpinnerActive">
-        <img src="../assets/images/spinner.gif"/>
-    </div>
-    <div class="sb-left sb-col" sb-split-screen-first>
-        <div class="sidebar">
-            <div class="alert alert-danger" role="alert" ng-show="resourceError">
-                <button type="button" class="close" ng-click="resourceError=null">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Close</span>
-                </button>
-                <div ng-bind-html="resourceError"></div>
+    <div class="main sb-row" sb-split-screen>
+        <!--TODO: find better way to use the spinner avoiding isolate scope collisions-->
+        <div class="sb-spinner" ng-show="isSpinnerActive">
+            <img src="../assets/images/spinner.gif"/>
+        </div>
+        <div class="sb-left sb-col" sb-split-screen-first>
+            <div class="sidebar">
+                <div class="alert alert-danger" role="alert" ng-show="resourceError">
+                    <button type="button" class="close" ng-click="resourceError=null">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <div ng-bind-html="resourceError"></div>
+                </div>
+                <div sb-resource-description ng-show="showResourceDescription"></div>
+                <div sb-resource-literals></div>
             </div>
-            <div sb-resource-description ng-show="showResourceDescription"></div>
-            <div sb-resource-literals></div>
+        </div>
+        <div class="sb-split-screen sb-col" sb-split-screen-handle></div>
+        <div class="sb-right sb-col" sb-split-screen-second>
+            <div sb-resource-visualization></div>
         </div>
     </div>
-    <div class="sb-split-screen sb-col" sb-split-screen-handle></div>
-    <div class="sb-right sb-col" sb-split-screen-second>
-        <div sb-resource-visualization></div>
-    </div>
-</div>
 
-<div class="footer footer-nav sb-row">
-    Semantic graph browser
+    <div class="footer footer-nav sb-row">
+        Semantic graph browser
+    </div>
 </div>

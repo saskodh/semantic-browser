@@ -169,17 +169,17 @@
     cursor: default;
 }
 
-.pagination > li > a {
+/*.pagination > li > a {
     border-color: #457335;
     background-color: #548235;
-    /*background-color: rgba(84, 130, 53, 0.9);*/
+    *//*background-color: rgba(84, 130, 53, 0.9);*//*
     color: #ffffff;
 }
 
 .pagination > .active > a {
     border-color: #457335;
     background-color: #548235;
-    /*background-color: rgba(84, 130, 53, 0.9);*/
+    *//*background-color: rgba(84, 130, 53, 0.9);*//*
     color: #ffffff;
 }
 
@@ -187,9 +187,9 @@
 .pagination > .active > a {
     border-color: #457335;
     background-color: #548235;
-    /*background-color: rgba(84, 130, 53, 0.9);*/
+    *//*background-color: rgba(84, 130, 53, 0.9);*//*
     color: #ffffff;
-}
+}*/
 
 /* bootstrap 3.3.1 fix */
 .modal-backdrop {
