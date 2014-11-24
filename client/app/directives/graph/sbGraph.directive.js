@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .directive('sbGraph', function (d3, RESOURCE_TYPE, $location) {
+  .directive('sbGraph', function (d3, RESOURCE_TYPE, $location, $window) {
     return {
       require: '^disableGraphAnimation',
       scope: {
@@ -11,6 +11,8 @@ angular.module('sbApp')
         // here we will do the initialization
         var svg, svgZoomableContainer;
         var d3Element = d3.select(element[0]);
+        var svgWidth = $window.screen && $window.screen.availWidth ? $window.screen.availWidth : 10000;
+        var svgHeight = $window.screen && $window.screen.availHeight ? $window.screen.availHeight : 10000;
         var width = element.width();
         var height = element.height();
 
@@ -21,8 +23,8 @@ angular.module('sbApp')
 
         // attach the svg
         svg = d3Element.append("svg")
-          .attr("width", width)
-          .attr("height", height);
+          .attr("width", svgWidth)
+          .attr("height", svgHeight);
         svgZoomableContainer = svg.append('svg:g')
           .call(d3.behavior.zoom().on("zoom", function() {
             svgZoomableContainer.attr("transform",
