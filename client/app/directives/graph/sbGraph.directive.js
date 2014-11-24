@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbApp')
-  .directive('sbGraph', function (d3, RESOURCE_TYPE, $location, $window) {
+  .directive('sbGraph', function (d3, RESOURCE_TYPE, $location, $window, $compile) {
     return {
       require: '^disableGraphAnimation',
       scope: {
@@ -115,7 +115,9 @@ angular.module('sbApp')
             .data(graphData.nodes)
             .enter().append("g")
             .attr("class", function(d){ return 'node ' + d.type; })
-          ;
+            .attr('tooltip', function (d) { return d.uri; })
+            .attr("tooltip-append-to-body", true)
+            .attr('tooltip-popup-delay', 1000);
 
           node.append("circle")
             .attr("class", "circle")
@@ -187,6 +189,11 @@ angular.module('sbApp')
               .attr("transform","scale(1)");
           });
 
+          // NOTE: recompile the container
+          svgZoomableContainer.call(function(){
+            $compile(this[0])(scope);
+          });
+
           force.nodes(graphData.nodes).links(graphData.links).on("tick", onTick);
           force.start();
         };
@@ -197,18 +204,6 @@ angular.module('sbApp')
             updateGraph(newGraphData);
           }
         });
-
-        var onResizeHandler = function () {
-          width = element.width();
-          height = element.height();
-          svg.attr("width", width).attr("height", height);
-          force.size([width, height]);
-          if (scope.graphData && scope.graphData.mainNode) {
-            scope.graphData.mainNode.x = width / 2;
-            scope.graphData.mainNode.y = height / 2;
-            force.start();
-          }
-        };
 
         // NOTE: start stop force on some element event like hover
         disableGraphAnimation.setGraph(force);

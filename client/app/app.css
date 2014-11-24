@@ -1,5 +1,6 @@
-.body {
+body {
     margin: 0;
+    overflow: hidden;
 }
 .page {
     position: absolute;
@@ -167,6 +168,10 @@
     text-decoration: none;
     pointer-events: none;
     cursor: default;
+}
+
+.tooltip-inner {
+    max-width: none;
 }
 
 /*.pagination > li > a {
