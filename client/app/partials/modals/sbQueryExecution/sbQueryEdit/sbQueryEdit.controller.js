@@ -5,7 +5,7 @@ angular.module('sbApp')
     $scope.error = null;
     $scope.formData = {};
     $scope.formData.queryText = 'select distinct ?Concept where {[] a ?Concept} LIMIT 100';
-    $scope.formData.defaultDataSet = 'http://dbpedia.org';
+    $scope.formData.defaultDataSet = '';
     $scope.formData.timeout = 30000;
 
     $scope.submitQuery = function (query) {

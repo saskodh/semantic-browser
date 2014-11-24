@@ -94,11 +94,11 @@ angular.module('sbApp')
           }
 
           // center the main node
-          graphData.mainNode.x = width / 2;
-          graphData.mainNode.px = width / 2;
-          graphData.mainNode.y = height / 2;
-          graphData.mainNode.py = height / 2;
-          graphData.mainNode.fixed = true;
+          if (graphData.mainNode) {
+            graphData.mainNode.x = width / 2;
+            graphData.mainNode.y = height / 2;
+            graphData.mainNode.fixed = true;
+          }
 
           // add links
           // TODO: check why the marker in not shown
@@ -170,7 +170,7 @@ angular.module('sbApp')
               .attr("transform","scale(1.5)");
           });
 
-          node.on('mouseout', function(d){
+          node.on('mouseout', function(){
             link.classed('highlight', false).classed('lowlight', false);
             node.each(function (d) {
               d.highlight = false;
